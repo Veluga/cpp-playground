@@ -43,6 +43,12 @@ target_include_directories(test_matrix_multiply PUBLIC include)
 target_compile_options(test_matrix_multiply PUBLIC "-Wall")
 set_property(TARGET test_matrix_multiply PROPERTY CXX_STANDARD 17)
 
+add_executable(test_fft app/test_fft.cpp)
+target_link_libraries(test_fft Catch2::Catch2)
+target_include_directories(test_fft PUBLIC include)
+target_compile_options(test_fft PUBLIC "-Wall")
+set_property(TARGET test_fft PROPERTY CXX_STANDARD 17)
+
 if(ENABLE_DEBUG)
   set(CMAKE_BUILD_TYPE "Debug")
 endif()
