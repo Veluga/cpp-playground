@@ -18,7 +18,7 @@ void compute_in_place(F transpose_op, std::size_t m, std::size_t n, T *b) {
 	for (std::size_t i = 0; i < m; ++i) {
 		for (std::size_t j = 0; j < n; ++j) {
 			// Perhaps this is horribly inefficient (call to get())
-			b[i * m + j] = c.get()[i * m + j];
+			b[i * n + j] = c.get()[i * n + j];
 		}
 	}
   return;
@@ -33,7 +33,7 @@ void matrix_transpose_helper(const T *a, std::size_t m_orig, std::size_t n_orig,
     return;
   }
 
-  if (m * n <= T(64)) {
+  if (m * n <= 64) {
     for (std::size_t i = 0; i < m; ++i) {
       for (std::size_t j = 0; j < n; ++j) {
         b[j * m_orig + i] = a[i * n_orig + j];
